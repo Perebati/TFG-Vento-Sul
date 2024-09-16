@@ -1,0 +1,45 @@
+version: '3.9'
+
+services:
+  postgres:
+    container_name: postgres-ventoSul
+    image: postgres
+    restart: unless-stopped
+    volumes:
+      - postgres:/var/lib/postgresql/data:rw
+    ports:
+      - 5432:5432
+    healthcheck:
+      test: [CMD, pg_isready]
+      interval: 10s
+      timeout: 15s
+      retries: 5
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+  pgadmin:
+    container_name: pgadmin-ventoSul
+    image: dpage/pgadmin4
+    restart: unless-stopped
+    volumes:
+      - pgadmin:/var/lib/pgadmin:rw
+    ports:
+      - 5050:80
+    healthcheck:
+      test: [CMD, wget, -O, '-', http://pgadmin/misc/ping]
+      interval: 10s
+      timeout: 15s
+      retries: 5
+    environment:
+      PGADMIN_DEFAULT_EMAIL: root@root.com
+      PGADMIN_DEFAULT_PASSWORD: root
+
+networks:
+  default:
+    name: vento-sul
+
+volumes:
+  pgadmin:
+    external: false
+  postgres:
+    external: false
