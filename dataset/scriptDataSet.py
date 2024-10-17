@@ -164,6 +164,9 @@ for i in range(np.size(wspeed, 0)):
         vertdisp[i][18],
         vertdisp[i][19]
     )
+    
     session.add(obj)
     register_adapter(np.uint16, adapt_numpy_uint16)
     session.commit()
+    
+Data.export_all_data_to_csv(Data)

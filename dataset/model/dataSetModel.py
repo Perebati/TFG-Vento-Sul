@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from datetime import timedelta
 import pandas as pd
+import csv
 
 Base = declarative_base()
 
@@ -635,3 +636,25 @@ class DataSet(Base):
                 vetor_modificado[i] = limite_inferior
                 
         return vetor_modificado
+    
+    def export_all_data_to_csv(self):
+        session = self.getSession(self)
+
+        try:
+            data = session.query(DataSet).all()
+
+            column_names = [column.name for column in DataSet.__table__.columns]
+
+            with open('dataset.csv', mode='w', newline='') as file:
+                writer = csv.DictWriter(file, fieldnames=column_names)
+                writer.writeheader()
+
+                for row in data:
+                    writer.writerow({col: getattr(row, col) for col in column_names})
+
+        except Exception as e:
+            session.rollback()
+            raise e
+
+        finally:
+            session.close()
