@@ -13,6 +13,11 @@ mtime = dados['L']['mtime'][0][0]
 temp = dados['L']['temp'][0][0]
 vspeed = dados['L']['vertspeed'][0][0]
 wdir = dados['L']['wdir'][0][0]
+press = dados['L']['press'][0][0]
+humid = dados['L']['humid'][0][0]
+temp = dados['L']['temp'][0][0]
+wdisp = dados['L']['wdisp'][0][0]
+vertdisp = dados['L']['vertdisp'][0][0]
 
 mtime = mtime.reshape(-1)
 
@@ -32,6 +37,9 @@ for i in range(np.size(wspeed, 0)):
         dt_index[i].day,
         dt_index[i].hour,
         dt_index[i].minute,
+        press[i][0],
+        humid[i][0],
+        temp[i][0],
         wspeed[i][0],
         wspeed[i][1],
         wspeed[i][2],
@@ -110,7 +118,47 @@ for i in range(np.size(wspeed, 0)):
         (wspeed[i][16] -  wspeed[i][15]) / 10,
         (wspeed[i][17] -  wspeed[i][16]) / 20,
         (wspeed[i][18] -  wspeed[i][17]) / 20,
-        (wspeed[i][19] -  wspeed[i][18]) / 20
+        (wspeed[i][19] -  wspeed[i][18]) / 20,
+        wdisp[i][0],
+        wdisp[i][1],
+        wdisp[i][2],
+        wdisp[i][3], 
+        wdisp[i][4],
+        wdisp[i][5],
+        wdisp[i][6],
+        wdisp[i][7],
+        wdisp[i][8],
+        wdisp[i][9],
+        wdisp[i][10],
+        wdisp[i][11],
+        wdisp[i][12],
+        wdisp[i][13],
+        wdisp[i][14],
+        wdisp[i][15],
+        wdisp[i][16],
+        wdisp[i][17],
+        wdisp[i][18],
+        wdisp[i][19],
+        vertdisp[i][0],
+        vertdisp[i][1],
+        vertdisp[i][2],
+        vertdisp[i][3], 
+        vertdisp[i][4],
+        vertdisp[i][5],
+        vertdisp[i][6],
+        vertdisp[i][7],
+        vertdisp[i][8],
+        vertdisp[i][9],
+        vertdisp[i][10],
+        vertdisp[i][11],
+        vertdisp[i][12],
+        vertdisp[i][13],
+        vertdisp[i][14],
+        vertdisp[i][15],
+        vertdisp[i][16],
+        vertdisp[i][17],
+        vertdisp[i][18],
+        vertdisp[i][19]
     )
     session.add(obj)
     session.commit()

@@ -10,11 +10,14 @@ Base = declarative_base()
 class DataSet(Base):
     __tablename__ = "DataSet"
     id = Column(DateTime, primary_key=True)
-    year = Column(Integer)
-    month = Column(Integer)
-    day = Column(Integer)
-    hour = Column(Integer)
-    minute = Column(Integer)
+    year = Column(Double)
+    month = Column(Double)
+    day = Column(Double)
+    hour = Column(Double)
+    minute = Column(Double)
+    press = Column(Integer)
+    humid = Column(Integer)
+    temp = Column(Double)
     ws40 = Column(Double)
     ws50 = Column(Double)
     ws60 = Column(Double)
@@ -94,6 +97,46 @@ class DataSet(Base):
     cis17 = Column(Double)
     cis18 = Column(Double)
     cis19 = Column(Double)
+    wdisp40 = Column(Double)
+    wdisp50 = Column(Double)
+    wdisp60 = Column(Double)
+    wdisp70 = Column(Double)
+    wdisp80 = Column(Double)
+    wdisp90 = Column(Double)
+    wdisp100 = Column(Double)
+    wdisp110 = Column(Double)
+    wdisp120 = Column(Double)
+    wdisp130 = Column(Double)
+    wdisp140 = Column(Double)
+    wdisp150 = Column(Double)
+    wdisp160 = Column(Double)
+    wdisp170 = Column(Double)
+    wdisp180 = Column(Double)
+    wdisp190 = Column(Double)
+    wdisp200 = Column(Double)
+    wdisp220 = Column(Double)
+    wdisp240 = Column(Double)
+    wdisp260 = Column(Double)
+    vertdisp40 = Column(Double)
+    vertdisp50 = Column(Double)
+    vertdisp60 = Column(Double)
+    vertdisp70 = Column(Double)
+    vertdisp80 = Column(Double)
+    vertdisp90 = Column(Double)
+    vertdisp100 = Column(Double)
+    vertdisp110 = Column(Double)
+    vertdisp120 = Column(Double)
+    vertdisp130 = Column(Double)
+    vertdisp140 = Column(Double)
+    vertdisp150 = Column(Double)
+    vertdisp160 = Column(Double)
+    vertdisp170 = Column(Double)
+    vertdisp180 = Column(Double)
+    vertdisp190 = Column(Double)
+    vertdisp200 = Column(Double)
+    vertdisp220 = Column(Double)
+    vertdisp240 = Column(Double)
+    vertdisp260 = Column(Double)
 
     def __init__(
         self,
@@ -103,6 +146,9 @@ class DataSet(Base):
         day,
         hour,
         minute,
+        press,
+        humid,
+        temp,
         ws40,
         ws50,
         ws60,
@@ -182,6 +228,46 @@ class DataSet(Base):
         cis17,
         cis18,
         cis19,
+        wdisp40,
+        wdisp50,
+        wdisp60,
+        wdisp70,
+        wdisp80,
+        wdisp90,
+        wdisp100,
+        wdisp110,
+        wdisp120,
+        wdisp130,
+        wdisp140,
+        wdisp150,
+        wdisp160,
+        wdisp170,
+        wdisp180,
+        wdisp190,
+        wdisp200,
+        wdisp220,
+        wdisp240,
+        wdisp260,
+        vertdisp40,
+        vertdisp50,
+        vertdisp60,
+        vertdisp70,
+        vertdisp80,
+        vertdisp90,
+        vertdisp100,
+        vertdisp110,
+        vertdisp120,
+        vertdisp130,
+        vertdisp140,
+        vertdisp150,
+        vertdisp160,
+        vertdisp170,
+        vertdisp180,
+        vertdisp190,
+        vertdisp200,
+        vertdisp220,
+        vertdisp240,
+        vertdisp260
     ):
         self.id = id
         self.year = year
@@ -189,6 +275,9 @@ class DataSet(Base):
         self.day = day
         self.hour = hour
         self.minute = minute
+        self.temp = temp
+        self.humid = humid
+        self.press = press
         self.ws40 = ws40
         self.ws50 = ws50
         self.ws60 = ws60
@@ -268,6 +357,47 @@ class DataSet(Base):
         self.cis17 = cis17
         self.cis18 = cis18
         self.cis19 = cis19
+        self.wdisp40 = wdisp40
+        self.wdisp50 = wdisp50
+        self.wdisp60 = wdisp60
+        self.wdisp70 = wdisp70
+        self.wdisp80 = wdisp80
+        self.wdisp90 = wdisp90
+        self.wdisp100 = wdisp100
+        self.wdisp110 = wdisp110
+        self.wdisp120 = wdisp120
+        self.wdisp130 = wdisp130
+        self.wdisp140 = wdisp140
+        self.wdisp150 = wdisp150
+        self.wdisp160 = wdisp160
+        self.wdisp170 = wdisp170
+        self.wdisp180 = wdisp180
+        self.wdisp190 = wdisp190
+        self.wdisp200 = wdisp200
+        self.wdisp220 = wdisp220
+        self.wdisp240 = wdisp240
+        self.wdisp260 = wdisp260
+        self.vertdisp40 = vertdisp40
+        self.vertdisp50 = vertdisp50
+        self.vertdisp60 = vertdisp60
+        self.vertdisp70 = vertdisp70
+        self.vertdisp80 = vertdisp80
+        self.vertdisp90 = vertdisp90
+        self.vertdisp100 = vertdisp100
+        self.vertdisp110 = vertdisp110
+        self.vertdisp120 = vertdisp120
+        self.vertdisp130 = vertdisp130
+        self.vertdisp140 = vertdisp140
+        self.vertdisp150 = vertdisp150
+        self.vertdisp160 = vertdisp160
+        self.vertdisp170 = vertdisp170
+        self.vertdisp180 = vertdisp180
+        self.vertdisp190 = vertdisp190
+        self.vertdisp200 = vertdisp200
+        self.vertdisp220 = vertdisp220
+        self.vertdisp240 = vertdisp240
+        self.vertdisp260 = vertdisp260
+     
 
     def getSession(self):
         engine = create_engine(
