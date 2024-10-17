@@ -4,8 +4,12 @@ import pandas as pd
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from model import dataSetModel
+from psycopg2.extensions import register_adapter, AsIs
 
 Data = dataSetModel.DataSet
+
+def adapt_numpy_uint16(numpy_uint16):
+    return AsIs(numpy_uint16)
 
 dados = loadmat('P1_LIDAR_matrix.mat') 
 wspeed = dados['L']['wspeed'][0][0]
@@ -37,8 +41,8 @@ for i in range(np.size(wspeed, 0)):
         dt_index[i].day,
         dt_index[i].hour,
         dt_index[i].minute,
-        press[i][0],
-        humid[i][0],
+        adapt_numpy_uint16(press[i][0]),
+        adapt_numpy_uint16(humid[i][0]),
         temp[i][0],
         wspeed[i][0],
         wspeed[i][1],
@@ -161,6 +165,5 @@ for i in range(np.size(wspeed, 0)):
         vertdisp[i][19]
     )
     session.add(obj)
+    register_adapter(np.uint16, adapt_numpy_uint16)
     session.commit()
-
-

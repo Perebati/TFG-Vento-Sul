@@ -10,11 +10,11 @@ Base = declarative_base()
 class DataSet(Base):
     __tablename__ = "DataSet"
     id = Column(DateTime, primary_key=True)
-    year = Column(Double)
-    month = Column(Double)
-    day = Column(Double)
-    hour = Column(Double)
-    minute = Column(Double)
+    year = Column(Integer)
+    month = Column(Integer)
+    day = Column(Integer)
+    hour = Column(Integer)
+    minute = Column(Integer)
     press = Column(Integer)
     humid = Column(Integer)
     temp = Column(Double)
@@ -275,9 +275,9 @@ class DataSet(Base):
         self.day = day
         self.hour = hour
         self.minute = minute
-        self.temp = temp
-        self.humid = humid
         self.press = press
+        self.humid = humid
+        self.temp = temp
         self.ws40 = ws40
         self.ws50 = ws50
         self.ws60 = ws60
